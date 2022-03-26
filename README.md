@@ -12,20 +12,12 @@ All you need is a Julia compiler ([available here](https://julialang.org/downloa
 At the time of writing, we used version v1.7.2.
 Newer versions may or may not work, and older versions are [available here](https://julialang.org/downloads/oldreleases/).
 
-Download the content of this repository and, from the main folder, start the Julia REPL and activate the project:
+Download the content of this repository and move to that folder.
 
-```shell
-$ julia --project=.
-```
+## ➡️ Start
 
-Install all recorded dependencies:
-
-```julia
-julia> using Pkg; Pkg.instantiate()
-```
-To exit the Julia REPL, use `exit()`.
-
-To run this repeatability evaluation, it is recommended that you create a new `output` directory to store the generated results and start Julia from that folder:
+From the main folder of this repository, start the Julia REPL and activate the project.
+To run the repeatability evaluation, it is recommended that you create a new `output` directory to store the generated results and start Julia from that folder:
 
 ```shell
 $ mkdir output
@@ -33,9 +25,21 @@ $ cd output
 $ julia --project=..
 ```
 
+Once you are in the Julia REPL, first install all required dependencies:
+
+```julia
+julia> using Pkg; Pkg.instantiate()
+```
+
+Next run the experiments as described in the next section.
+
+To exit the Julia REPL, use `exit()`.
+
 For reference, this repository includes the folder `results/` containing the files we obtained in the experiments for the paper.
 
 ## ☑️ Complete evaluation
+
+Below we assume that Julia was run from the `output` directory.
 
 To run the whole evaluation, run the script `experiments/run_all.jl`.
 
@@ -43,26 +47,15 @@ To run the whole evaluation, run the script `experiments/run_all.jl`.
 julia> include("../experiments/run_all.jl")
 ```
 
-### 🖼️ Visual evaluation
+This will create the plots in most of the figures as `.pdf` files  and store the experimental results in `.dat` files.
+The latter can be used to create Table 2 and Figure 6 in the paper as described below.
+The data used to create Table 1 is contained in the file `experiment_krylov_table_1.dat`.
 
-To reproduce only the plots from the paper, run the script `experiments/plot_all.jl`:
+### 📑 Creating Table 2 and Figure 6
 
-```julia
-julia> include("../experiments/plot_all.jl")
-```
+We provide the LaTeX script to create Table 2 and Figure 6 in the folder `latex/`.
+The script requires that the experimental `.dat` files have been generated.
 
-### ⚙️ Quantitative evaluation
-
-To reproduce only the quantitative experiments from the paper, run the script `experiments/experiment_runtimes.jl`:
-
-```julia
-julia> include("../experiments/experiment_runtimes.jl")
-```
-
-The results will be written to `.dat` files. These can be used to create the tables and plots in the paper.
-
-TODO describe
-
-### :notebook_with_decorative_cover: Further documentation
+## :notebook_with_decorative_cover: Further documentation
 
 For documentation specific to the set representation library used in this repeatability evaluation, see [LazySets.jl](https://github.com/JuliaReach/LazySets.jl#lazysetsjl). For documentation specific to the systems modeling language, see [MathematicalSystems.jl](https://github.com/JuliaReach/MathematicalSystems.jl#mathematicalsystemsjl). Finally, the actual implementation of the conservative time discretization methods used can be found in the library [ReachabilityAnalysis.jl](https://github.com/JuliaReach/ReachabilityAnalysis.jl#reachabilityanalysisjl).
