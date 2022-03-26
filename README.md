@@ -17,7 +17,7 @@ Download the content of this repository and move to that folder.
 ## ➡️ Start
 
 From the main folder of this repository, start the Julia REPL and activate the project.
-To run the repeatability evaluation, it is recommended that you create a new `output` directory to store the generated results and start Julia from that folder:
+To run the repeatability evaluation, first create a new `output` directory to store the generated results and start Julia from that folder:
 
 ```shell
 $ mkdir output
@@ -37,7 +37,7 @@ To exit the Julia REPL, use `exit()`.
 
 For reference, this repository includes the folder `results/` containing the files we obtained in the experiments for the paper.
 
-## ☑️ Complete evaluation
+## ☑️ Evaluation
 
 Below we assume that Julia was run from the `output` directory.
 
@@ -54,7 +54,7 @@ The data used to create Table 1 is contained in the file `experiment_krylov_tabl
 ### 📑 Creating Table 2 and Figure 6
 
 We provide the LaTeX script to create Table 2 and Figure 6 in the folder `latex/`.
-The script requires that the experimental `.dat` files have been generated.
+The script (`table2_and_figure_6.tex`) requires that the experimental `.dat` files have been generated in the `output` folder.
 
 ## :notebook_with_decorative_cover: Further documentation
 
