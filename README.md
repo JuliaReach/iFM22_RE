@@ -62,3 +62,7 @@ julia> include("../experiments/experiment_runtimes.jl")
 The results will be written to `.dat` files. These can be used to create the tables and plots in the paper.
 
 TODO describe
+
+### :notebook_with_decorative_cover: Further documentation
+
+For documentation specific to the set representation library used in this submission, see [LazySets.jl](https://github.com/JuliaReach/LazySets.jl#lazysetsjl). For documentation specific to the systems modeling language, see [MathematicalSystems.jl](https://github.com/JuliaReach/MathematicalSystems.jl#mathematicalsystemsjl). Finally, the actual implementation of the conservative time discretiation methods used in the submission can be found in the library [ReachabilityAnalysis.jl](https://github.com/JuliaReach/ReachabilityAnalysis.jl#reachabilityanalysisjl).
