@@ -18,6 +18,12 @@ Download the content of this repository and, from the main folder, start the Jul
 $ julia --project=.
 ```
 
+Install all recorded dependencies:
+
+```julia
+julia> ] instantiate
+```
+
 ## ☑️ Complete evaluation
 
 To run the whole evaluation, run the script `experiments/run_all.jl`:
