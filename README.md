@@ -21,7 +21,7 @@ $ julia --project=.
 Install all recorded dependencies:
 
 ```julia
-julia> ] instantiate
+julia> using Pkg; Pkg.instantiate()
 ```
 
 ## ☑️ Complete evaluation
