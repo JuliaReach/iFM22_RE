@@ -8,16 +8,17 @@ An arXiv version is available [here](https://arxiv.org/abs/2111.01454).
 
 ## 💾 Installation
 
-All you need is a Julia compiler ([available here](https://julialang.org/downloads/)).
-At the time of writing, we used version v1.7.2.
-Newer versions may or may not work, and older versions are [available here](https://julialang.org/downloads/oldreleases/).
+All you need is
 
-Download the content of this repository and move to that folder.
+1. a Julia compiler ([available here](https://julialang.org/downloads/))
+   * At the time of writing, we used version v1.7.2.
+   * We assume you have integrated `julia` in your `PATH` variable (otherwise replace the `julia` command below accordingly).
+3. the content of this repository.
 
 ## ➡️ Start
 
-From the main folder of this repository, start the Julia REPL and activate the project.
-To run the repeatability evaluation, first create a new `output` directory to store the generated results and start Julia from that folder:
+Move to the main folder of this repository.
+To run the repeatability evaluation, first create a new `output` directory to store the generated results and start the Julia REPL from that folder:
 
 ```shell
 $ mkdir output
@@ -35,9 +36,9 @@ Next run the experiments as described in the next section.
 
 To exit the Julia REPL, use `exit()`.
 
-For reference, this repository includes the folder `results/` containing the files we obtained in the experiments for the paper.
+For reference, this repository includes the `results` directory containing the files we obtained in the experiments for the paper.
 
-## ☑️ Evaluation
+## ☑️ Experiments
 
 Below we assume that Julia was run from the `output` directory.
 
@@ -53,9 +54,9 @@ The data used to create Table 1 is contained in the file `experiment_krylov_tabl
 
 ### 📑 Creating Table 2 and Figure 6
 
-We provide the LaTeX script to create Table 2 and Figure 6 in the folder `latex/`.
-The script (`table2_and_figure_6.tex`) requires that the experimental `.dat` files have been generated in the `output` folder.
+We provide the LaTeX script to create Table 2 and Figure 6 in the `latex` directory.
+The script (`table2_and_figure_6.tex`) requires that the experimental `.dat` files have been generated in the `output` directory.
 
 ## :notebook_with_decorative_cover: Further documentation
 
-For documentation specific to the set representation library used in this repeatability evaluation, see [LazySets.jl](https://github.com/JuliaReach/LazySets.jl#lazysetsjl). For documentation specific to the systems modeling language, see [MathematicalSystems.jl](https://github.com/JuliaReach/MathematicalSystems.jl#mathematicalsystemsjl). Finally, the actual implementation of the conservative time discretization methods used can be found in the library [ReachabilityAnalysis.jl](https://github.com/JuliaReach/ReachabilityAnalysis.jl#reachabilityanalysisjl).
+For documentation specific to the set representation library used in this repeatability evaluation, see [LazySets.jl](https://github.com/JuliaReach/LazySets.jl#lazysetsjl). For documentation specific to the systems modeling language, see [MathematicalSystems.jl](https://github.com/JuliaReach/MathematicalSystems.jl#mathematicalsystemsjl). Finally, the actual implementation of the conservative time discretization methods can be found in the library [ReachabilityAnalysis.jl](https://github.com/JuliaReach/ReachabilityAnalysis.jl#reachabilityanalysisjl).
