@@ -32,8 +32,8 @@ Pd_heterog = discretize(P_heterog, δ, alg)
 Ω0_homog = []
 for α in αs
     local A_homog = [A b*u/α; zeros(1, 3)]
-    X0_homog = cartesian_product(X0, Singleton([α]))
-    P_homog = @ivp(x' = A_homog*x, x ∈ X_homog, x(0) ∈ X0_homog)
+    local X0_homog = cartesian_product(X0, Singleton([α]))
+    local P_homog = @ivp(x' = A_homog*x, x ∈ X_homog, x(0) ∈ X0_homog)
 
     Pd_homog = discretize(P_homog, δ, alg)
     local Ω0 = Projection(Pd_homog.x0, [1, 2])
@@ -75,11 +75,11 @@ Pd_heterog = discretize(P_heterog, δ, alg)
 Ω0_homog = []
 for α in αs
     local A_homog = [A b*u/α; zeros(1, 3)]
-    X0_homog = cartesian_product(X0, Singleton([α]))
+    local X0_homog = cartesian_product(X0, Singleton([α]))
     U_raw_homog = cartesian_product(translate(U_raw, -[u]), Singleton([0.0]))
     B_homog = [B zeros(size(B, 1)); zeros(size(B, 2)) 0]
     U_homog = ConstantInput(linear_map(B_homog, U_raw_homog))
-    P_homog = @ivp(x' = A_homog*x + u, x ∈ X_homog, u ∈ U_homog, x(0) ∈ X0_homog)
+    local P_homog = @ivp(x' = A_homog*x + u, x ∈ X_homog, u ∈ U_homog, x(0) ∈ X0_homog)
 
     Pd_homog = discretize(P_homog, δ, alg)
     push!(Ω0_homog, Projection(Pd_homog.x0, [1, 2]))  # project auxiliary variable
