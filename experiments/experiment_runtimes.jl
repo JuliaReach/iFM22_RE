@@ -5,6 +5,9 @@ using JuMP, Ipopt
 
 include("models.jl")
 
+# print the step size used in each iteration
+VERBOSE = false
+
 # scaling factor for time unit (base is in seconds)
 unit_scale = 1e3  # milliseconds
 
@@ -64,7 +67,7 @@ function experiment(P, δs, model_name, algs; m::Int=1)
             name2results[name] = tuple
         end
         δ2name2results[δ] = name2results
-        println("δ = $δ")
+        VERBOSE && println("δ = $δ")
     end
 
     # write results to table
@@ -111,6 +114,11 @@ end
          )
 
 # run experiments
+println("Running oscillator model ...")
 experiment(oscillator(), δs_oscillator, "oscillator", algs_homog; m=40)
+println("Running sdof model ...")
 experiment(freedom(), δs_freedom, "freedom", algs_homog; m=40)
+println("Running ISS model ...")
 experiment(iss(), δs_iss, "iss", algs_heterog)
+
+nothing
