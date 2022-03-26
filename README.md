@@ -18,8 +18,32 @@ Download the content of this repository and, from the main folder, start the Jul
 $ julia --project=.
 ```
 
-To reproduce the plots from the paper, run the script `experiments/plot_all.jl`:
+## ☑️ Complete evaluation
+
+To run the whole evaluation, run the script `experiments/run_all.jl`:
+
+```julia
+julia> include("experiments/run_all.jl")
+```
+
+### 🖼️ Visual evaluation
+
+To reproduce only the plots from the paper, run the script `experiments/plot_all.jl`:
 
 ```julia
 julia> include("experiments/plot_all.jl")
 ```
+
+### ⚙️ Quantitative evaluation
+
+To reproduce only the quantitative experiments from the paper, run the script `experiments/experiment_runtimes.jl`:
+
+```julia
+julia> include("experiments/experiment_runtimes.jl")
+```
+
+The results will be written to `.dat` files. These can be used to create the tables and plots in the paper.
+
+TODO describe
+
+For reference, the folder `results/` contains the files we obtained in the experiments for the paper.
