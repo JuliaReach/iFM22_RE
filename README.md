@@ -23,13 +23,24 @@ Install all recorded dependencies:
 ```julia
 julia> using Pkg; Pkg.instantiate()
 ```
+To exit the Julia REPL, use `exit()`.
+
+To run this repeatability evaluation, it is recommended that you create a new `output` directory to store the generated results and start Julia from that folder:
+
+```shell
+$ mkdir output
+$ cd output
+$ julia --project=..
+```
+
+For reference, this repository includes the folder `results/` containing the files we obtained in the experiments for the paper.
 
 ## ☑️ Complete evaluation
 
-To run the whole evaluation, run the script `experiments/run_all.jl`:
+To run the whole evaluation, run the script `experiments/run_all.jl`.
 
 ```julia
-julia> include("experiments/run_all.jl")
+julia> include("../experiments/run_all.jl")
 ```
 
 ### 🖼️ Visual evaluation
@@ -37,7 +48,7 @@ julia> include("experiments/run_all.jl")
 To reproduce only the plots from the paper, run the script `experiments/plot_all.jl`:
 
 ```julia
-julia> include("experiments/plot_all.jl")
+julia> include("../experiments/plot_all.jl")
 ```
 
 ### ⚙️ Quantitative evaluation
@@ -45,11 +56,9 @@ julia> include("experiments/plot_all.jl")
 To reproduce only the quantitative experiments from the paper, run the script `experiments/experiment_runtimes.jl`:
 
 ```julia
-julia> include("experiments/experiment_runtimes.jl")
+julia> include("../experiments/experiment_runtimes.jl")
 ```
 
 The results will be written to `.dat` files. These can be used to create the tables and plots in the paper.
 
 TODO describe
-
-For reference, the folder `results/` contains the files we obtained in the experiments for the paper.
