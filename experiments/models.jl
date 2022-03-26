@@ -1,6 +1,5 @@
 using JLD2
 
-
 function oscillator()
     A = [0.0 1; -4π 0]
     X0 = BallInf([0.0, 10.0], 0.1)
