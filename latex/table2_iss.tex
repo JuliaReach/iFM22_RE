@@ -1,0 +1,33 @@
+% compute run time from tabular data
+\pgfkeys{/pgf/fpu,/pgf/fpu/output format=fixed}  % enable large numbers
+
+\csvreader[before reading=\def\total{0},separator=tab]{../output/delta_time_iss.dat}{delta=\delta}{%
+\pgfmathsetmacro{\total}{\total+1}%
+}
+%
+\csvreader[before reading=\def\Isumzono{0},separator=tab]{../output/delta_time_iss.dat}{Zonotope=\zono}{%
+\pgfmathsetmacro{\Isumzono}{\Isumzono+\zono}
+}
+\pgfmathsetmacro{\Isumzono}{\Isumzono/\total}
+%
+\csvreader[before reading=\def\Isumcorrhull{0},separator=tab]{../output/delta_time_iss.dat}{Correction-hull=\corrhull}{%
+\pgfmathsetmacro{\Isumcorrhull}{\Isumcorrhull+\corrhull}%
+}
+\pgfmathsetmacro{\Isumcorrhull}{\Isumcorrhull/\total}
+%
+\csvreader[before reading=\def\Isumfirstorder{0},separator=tab]{../output/delta_time_iss.dat}{First-order=\firstorder}{%
+\pgfmathsetmacro{\Isumfirstorder}{\Isumfirstorder+\firstorder}%
+}
+\pgfmathsetmacro{\Isumfirstorder}{\Isumfirstorder/\total}
+%
+\csvreader[before reading=\def\Isumforwback{0},separator=tab]{../output/delta_time_iss.dat}{Forward-backward=\forwback}{%
+\pgfmathsetmacro{\Isumforwback}{\Isumforwback+\forwback}
+}
+\pgfmathsetmacro{\Isumforwback}{\Isumforwback/\total}
+%
+\csvreader[before reading=\def\Isumforw{0},separator=tab]{../output/delta_time_iss.dat}{Forward=\forw}{%
+\pgfmathsetmacro{\Isumforw}{\Isumforw+\forw}%
+}
+\pgfmathsetmacro{\Isumforw}{\Isumforw/\total}
+
+\pgfkeys{/pgf/fpu=false}

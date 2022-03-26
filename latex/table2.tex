@@ -1,0 +1,126 @@
+\documentclass{article}
+
+% \usepackage{amsmath}
+% \usepackage{amssymb}
+\usepackage{xcolor}
+\colorlet{COLOR1}{orange}
+\definecolor{COLOR2}{rgb}{0,0.5,0}
+\colorlet{COLOR3}{blue}
+\definecolor{COLOR4}{rgb}{0.5,0,0.5}
+\colorlet{COLOR5}{red}
+\colorlet{COLOR6}{black}
+\usepackage[labelformat=simple]{subcaption}
+\renewcommand\thesubfigure{(\alph{subfigure})}
+\usepackage{csvsimple}
+\usepackage{booktabs}
+\usepackage{siunitx}
+\sisetup{group-digits=true,
+         group-four-digits=true,
+         group-separator={\,},
+         output-decimal-marker={.}}
+\usepackage{pgfplots}
+\usetikzlibrary{spy}
+\newcommand{\mc}[1]{\multicolumn{1}{c}{#1}}
+
+\begin{document}
+
+\begin{figure}[t!]
+	\centering
+	% harmonic oscillator
+	\begin{tikzpicture}[spy using outlines={circle, magnification=10, connect spies}]
+		\begin{loglogaxis}[height=43mm,width=\linewidth,no markers,xlabel={(harmonic oscillator) $\delta$},ylabel={$\rho(d, \Omega_0)$},x dir=reverse,legend columns=3,legend style={at={(0.5,1.03)},anchor=south}]
+			\addplot +[COLOR1] table[x index=0, y index=1] {../output/delta_support_oscillator.dat};
+			\addplot +[COLOR2] table[x index=0, y index=2] {../output/delta_support_oscillator.dat};
+			\addplot +[COLOR3] table[x index=0, y index=3] {../output/delta_support_oscillator.dat};
+			\addplot +[COLOR4] table[x index=0, y index=4] {../output/delta_support_oscillator.dat};
+			\addplot +[COLOR5] table[x index=0, y index=5] {../output/delta_support_oscillator.dat};
+			\addplot +[COLOR6,solid] table[x index=0, y index=6] {../output/delta_support_oscillator.dat};
+			\coordinate (spypoint1) at (axis cs:0.04,10.5);
+			\coordinate (magnifyglass1) at (axis cs:0.01,12.5);
+			\coordinate (spypoint2) at (axis cs:0.04,13.5);
+			\coordinate (magnifyglass2) at (axis cs:0.02,15);
+			\addlegendentry{d/dt}
+			\addlegendentry{Zonotope}
+			\addlegendentry{Correction hull}
+			\addlegendentry{First-order}
+			\addlegendentry{Forward/backward}
+			\addlegendentry{Forward}
+		\end{loglogaxis}
+		\spy [size=10mm] on (spypoint1) in node[fill=white] at (magnifyglass1);
+		\spy [size=10mm] on (spypoint2) in node[fill=white] at (magnifyglass2);
+	\end{tikzpicture}
+	% two degrees of freedom
+	\begin{tikzpicture}[spy using outlines={circle, magnification=10, connect spies}]
+		\begin{loglogaxis}[height=43mm,width=\linewidth,ymax=50,no markers,xlabel={(two degree of freedom) $\delta$},ylabel={$\rho(d, \Omega_0)$},x dir=reverse
+		]
+			\addplot +[COLOR1] table[x index=0, y index=1] {../output/delta_support_freedom.dat};
+			\addplot +[COLOR2] table[x index=0, y index=2] {../output/delta_support_freedom.dat};
+			\addplot +[COLOR3] table[x index=0, y index=3] {../output/delta_support_freedom.dat};
+			\addplot +[COLOR4] table[x index=0, y index=4] {../output/delta_support_freedom.dat};
+			\addplot +[COLOR5] table[x index=0, y index=5] {../output/delta_support_freedom.dat};
+			\addplot +[COLOR6,solid] table[x index=0, y index=6] {../output/delta_support_freedom.dat};
+			\coordinate (spypoint1) at (axis cs:0.000013,12.8);
+			\coordinate (magnifyglass1) at (axis cs:1e-5,25);
+		\end{loglogaxis}
+		\spy [size=10mm] on (spypoint1) in node[fill=white] at (magnifyglass1);
+	\end{tikzpicture}
+	% ISS
+	\begin{tikzpicture}[spy using outlines={circle, magnification=7, connect spies}]
+		\begin{loglogaxis}[height=43mm,width=\linewidth,ymax=50,no markers,xlabel={(ISS) $\delta$},ylabel={$\rho(d, \Omega_0)$},x dir=reverse
+		]
+			\addplot +[COLOR2] table[x index=0, y index=1] {../output/delta_support_iss.dat};
+			\addplot +[COLOR3] table[x index=0, y index=2] {../output/delta_support_iss.dat};
+			\addplot +[COLOR4] table[x index=0, y index=3] {../output/delta_support_iss.dat};
+			\addplot +[COLOR5] table[x index=0, y index=4] {../output/delta_support_iss.dat};
+			\addplot +[COLOR6,solid] table[x index=0, y index=5] {../output/delta_support_iss.dat};
+			\coordinate (spypoint) at (axis cs:1.5e-2,0.3);
+			\coordinate (magnifyglass) at (axis cs:0.005,3);
+		\end{loglogaxis}
+		\spy [size=10mm] on (spypoint) in node[fill=white] at (magnifyglass);
+	\end{tikzpicture}
+	%
+	\caption{Benchmark results with the graphs of $\rho(d, \Omega_0)$ (log axes).
+	In the second plot, the methods ``forward-backward'' and ``forward-only'' yield identical results.
+	In the third plot, the ``d/dt'' method is not applicable.
+	}
+	\label{fig:benchmark_delta}
+\end{figure}
+
+\input{table2_oscillator}
+\input{table2_freedom}
+\input{table2_iss}
+
+\begin{table}[tb]
+	\caption{Average run times (in milliseconds) for the different methods.}
+	\label{tab:runtime}
+	\centering
+	\begin{tabular}{c | r @{\hspace*{1.8mm}} r @{\hspace*{1.8mm}} r @{\hspace*{1.8mm}} r @{\hspace*{1.8mm}} r @{\hspace*{1.8mm}} r}
+		\toprule
+		Model & \mc{d/dt} & \mc{Zonotope} & \mc{Correction hull} & \mc{First-order} & \mc{Fwd/bwd} & \mc{Forward} \\
+		\midrule
+		Oscillator &
+		\pgfmathroundtozerofill{\Osumddt} \num{\pgfmathresult} &
+		\pgfmathroundtozerofill{\Osumzono} \num{\pgfmathresult} &
+		\pgfmathroundtozerofill{\Osumcorrhull} \num{\pgfmathresult} &
+		\pgfmathroundtozerofill{\Osumfirstorder} \num{\pgfmathresult} &
+		\pgfmathroundtozerofill{\Osumforwback} \num{\pgfmathresult} &
+		\pgfmathroundtozerofill{\Osumforw} \num{\pgfmathresult} \\
+		TDoF &
+		\pgfmathroundtozerofill{\Fsumddt} \num{\pgfmathresult} &
+		\pgfmathroundtozerofill{\Fsumzono} \num{\pgfmathresult} &
+		\pgfmathroundtozerofill{\Fsumcorrhull} \num{\pgfmathresult} &
+		\pgfmathroundtozerofill{\Fsumfirstorder} \num{\pgfmathresult} &
+		\pgfmathroundtozerofill{\Fsumforwback} \num{\pgfmathresult} &
+		\pgfmathroundtozerofill{\Fsumforw} \num{\pgfmathresult} \\
+		ISS &
+		\mc{--} &
+		\pgfmathroundtozerofill{\Isumzono} \num{\pgfmathresult} &
+		\pgfmathroundtozerofill{\Isumcorrhull} \num{\pgfmathresult} &
+		\pgfmathroundtozerofill{\Isumfirstorder} \num{\pgfmathresult} &
+		\pgfmathroundtozerofill{\Isumforwback} \num{\pgfmathresult} &
+		\pgfmathroundtozerofill{\Isumforw} \num{\pgfmathresult} \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+\end{document}

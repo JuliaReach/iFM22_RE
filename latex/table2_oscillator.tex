@@ -1,0 +1,38 @@
+% compute run time from tabular data
+\pgfkeys{/pgf/fpu,/pgf/fpu/output format=fixed}  % enable large numbers
+
+\csvreader[before reading=\def\total{0},separator=tab]{../output/delta_time_oscillator.dat}{delta=\delta}{%
+\pgfmathsetmacro{\total}{\total+1}%
+}
+%
+\csvreader[before reading=\def\Osumddt{0},separator=tab]{../output/delta_time_oscillator.dat}{d-dt=\ddt}{%
+\pgfmathsetmacro{\Osumddt}{\Osumddt+\ddt}%
+}
+\pgfmathsetmacro{\Osumddt}{\Osumddt/\total}
+%
+\csvreader[before reading=\def\Osumzono{0},separator=tab]{../output/delta_time_oscillator.dat}{Zonotope=\zono}{%
+\pgfmathsetmacro{\Osumzono}{\Osumzono+\zono}%
+}
+\pgfmathsetmacro{\Osumzono}{\Osumzono/\total}
+%
+\csvreader[before reading=\def\Osumcorrhull{0},separator=tab]{../output/delta_time_oscillator.dat}{Correction-hull=\corrhull}{%
+\pgfmathsetmacro{\Osumcorrhull}{\Osumcorrhull+\corrhull}%
+}
+\pgfmathsetmacro{\Osumcorrhull}{\Osumcorrhull/\total}
+%
+\csvreader[before reading=\def\Osumfirstorder{0},separator=tab]{../output/delta_time_oscillator.dat}{First-order=\firstorder}{%
+\pgfmathsetmacro{\Osumfirstorder}{\Osumfirstorder+\firstorder}%
+}
+\pgfmathsetmacro{\Osumfirstorder}{\Osumfirstorder/\total}
+%
+\csvreader[before reading=\def\Osumforwback{0},separator=tab]{../output/delta_time_oscillator.dat}{Forward-backward=\forwback}{%
+\pgfmathsetmacro{\Osumforwback}{\Osumforwback+\forwback}
+}
+\pgfmathsetmacro{\Osumforwback}{\Osumforwback/\total}
+%
+\csvreader[before reading=\def\Osumforw{0},separator=tab]{../output/delta_time_oscillator.dat}{Forward=\forw}{%
+\pgfmathsetmacro{\Osumforw}{\Osumforw+\forw}%
+}
+\pgfmathsetmacro{\Osumforw}{\Osumforw/\total}
+
+\pgfkeys{/pgf/fpu=false}

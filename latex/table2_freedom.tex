@@ -1,0 +1,38 @@
+% compute run time from tabular data
+\pgfkeys{/pgf/fpu,/pgf/fpu/output format=fixed}  % enable large numbers
+
+\csvreader[before reading=\def\total{0},separator=tab]{../output/delta_time_freedom.dat}{delta=\delta}{%
+\pgfmathsetmacro{\total}{\total+1}%
+}
+%
+\csvreader[before reading=\def\Fsumddt{0},separator=tab]{../output/delta_time_freedom.dat}{d-dt=\ddt}{%
+\pgfmathsetmacro{\Fsumddt}{\Fsumddt+\ddt}%
+}
+\pgfmathsetmacro{\Fsumddt}{\Fsumddt/\total}
+%
+\csvreader[before reading=\def\Fsumzono{0},separator=tab]{../output/delta_time_freedom.dat}{Zonotope=\zono}{%
+\pgfmathsetmacro{\Fsumzono}{\Fsumzono+\zono}%
+}
+\pgfmathsetmacro{\Fsumzono}{\Fsumzono/\total}
+%
+\csvreader[before reading=\def\Fsumcorrhull{0},separator=tab]{../output/delta_time_freedom.dat}{Correction-hull=\corrhull}{%
+\pgfmathsetmacro{\Fsumcorrhull}{\Fsumcorrhull+\corrhull}%
+}
+\pgfmathsetmacro{\Fsumcorrhull}{\Fsumcorrhull/\total}
+%
+\csvreader[before reading=\def\Fsumfirstorder{0},separator=tab]{../output/delta_time_freedom.dat}{First-order=\firstorder}{%
+\pgfmathsetmacro{\Fsumfirstorder}{\Fsumfirstorder+\firstorder}%
+}
+\pgfmathsetmacro{\Fsumfirstorder}{\Fsumfirstorder/\total}
+%
+\csvreader[before reading=\def\Fsumforwback{0},separator=tab]{../output/delta_time_freedom.dat}{Forward-backward=\forwback}{%
+\pgfmathsetmacro{\Fsumforwback}{\Fsumforwback+\forwback}
+}
+\pgfmathsetmacro{\Fsumforwback}{\Fsumforwback/\total}
+%
+\csvreader[before reading=\def\Fsumforw{0},separator=tab]{../output/delta_time_freedom.dat}{Forward=\forw}{%
+\pgfmathsetmacro{\Fsumforw}{\Fsumforw+\forw}%
+}
+\pgfmathsetmacro{\Fsumforw}{\Fsumforw/\total}
+
+\pgfkeys{/pgf/fpu=false}
