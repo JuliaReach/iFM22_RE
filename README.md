@@ -55,7 +55,7 @@ The data used to create Table 1 is contained in the file `experiment_krylov_tabl
 ### ⚙️ Creating Table 2 and Figure 6
 
 We provide the LaTeX script to create Table 2 and Figure 6 in the `latex` directory.
-The script (`table2_and_figure_6.tex`) requires that the experimental `.dat` files have been generated in the `output` directory.
+The script (`table_2_and_figure_6.tex`) requires that the experimental `.dat` files have been generated in the `output` directory.
 
 ## 📔 Further documentation
 
