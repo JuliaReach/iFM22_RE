@@ -1,8 +1,8 @@
 # script to create all plots
 
-for file in ("plot_intro_exact_figure_1_a.jl",
-             "plot_intro_approximate_figure_1_b.jl",
-             "plot_intro_recurrence_figure_1_c.jl",
+for file in ("plot_intro_exact_figure_1a.jl",
+             "plot_intro_approximate_figure_1b.jl",
+             "plot_intro_recurrence_figure_1c.jl",
              "plot_homogenize_figure_2a_and_figure_8.jl",
              "plot_shrink_delta_figure_2b.jl",
              "plot_delta_figure_3.jl",
