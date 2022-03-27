@@ -150,7 +150,7 @@ function run_benchmarks()
     end
 end
 
-println("Running Heat3D model... ")
+println("Running Heat3D model ...")
 run_benchmarks()
 
 nothing
