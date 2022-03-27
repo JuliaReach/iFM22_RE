@@ -52,11 +52,11 @@ This will create the plots in most of the figures as `.pdf` files and store the 
 The latter can be used to create Table 2 and Figure 6 in the paper as described below.
 The data used to create Table 1 is contained in the file `experiment_krylov_table_1.dat`.
 
-### 📑 Creating Table 2 and Figure 6
+### ⚙️ Creating Table 2 and Figure 6
 
 We provide the LaTeX script to create Table 2 and Figure 6 in the `latex` directory.
 The script (`table2_and_figure_6.tex`) requires that the experimental `.dat` files have been generated in the `output` directory.
 
-## :notebook_with_decorative_cover: Further documentation
+## 📔 Further documentation
 
 For documentation specific to the set representation library used in this repeatability evaluation, see [LazySets.jl](https://github.com/JuliaReach/LazySets.jl#lazysetsjl). For documentation specific to the systems modeling language, see [MathematicalSystems.jl](https://github.com/JuliaReach/MathematicalSystems.jl#mathematicalsystemsjl). Finally, the actual implementation of the conservative time discretization methods can be found in the library [ReachabilityAnalysis.jl](https://github.com/JuliaReach/ReachabilityAnalysis.jl#reachabilityanalysisjl).
