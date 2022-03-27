@@ -10,10 +10,10 @@ An arXiv version is available [here](https://arxiv.org/abs/2111.01454).
 
 All you need is
 
-1. a Julia compiler ([available here](https://julialang.org/downloads/))
+1. A Julia compiler ([available here](https://julialang.org/downloads/))
    * At the time of writing, we used version v1.7.2.
    * We assume you have integrated `julia` in your `PATH` variable (otherwise replace the `julia` command below accordingly).
-3. the content of this repository.
+3. The content of this repository.
 
 ## ➡️ Start
 
@@ -48,7 +48,7 @@ To run the whole evaluation, run the script `experiments/run_all.jl`.
 julia> include("../experiments/run_all.jl")
 ```
 
-This will create the plots in most of the figures as `.pdf` files  and store the experimental results in `.dat` files.
+This will create the plots in most of the figures as `.pdf` files and store the experimental results in `.dat` files.
 The latter can be used to create Table 2 and Figure 6 in the paper as described below.
 The data used to create Table 1 is contained in the file `experiment_krylov_table_1.dat`.
 
