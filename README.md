@@ -1,5 +1,7 @@
 # iFM22_RE
 
+[![DOI](https://zenodo.org/badge/473738227.svg)](https://zenodo.org/badge/latestdoi/473738227)
+
 Repeatibility evaluation for "Conservative Time Discretization: A Comparative Study" (iFM'21) by Marcelo Forets and Christian Schilling.
 
 The article was accepted at the [17th International Conference on integrated Formal Methods](https://ifm22.si.usi.ch/), which took place in Lugano, Switzerland between June 7-10, 2022.
